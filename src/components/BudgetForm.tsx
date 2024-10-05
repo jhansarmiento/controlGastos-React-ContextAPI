@@ -4,21 +4,21 @@ import { useBudget } from "../hooks/useBudget";
 
 export default function BudgetForm() {
   const [budget, setBudget] = useState(0);
-  const { dispatch } = useBudget()
+  const { dispatch } = useBudget();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBudget(+e.target.value);
   };
 
   const isValid = useMemo(() => {
-   return isNaN(budget) || budget <= 0
+    return isNaN(budget) || budget <= 0;
   }, [budget]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    dispatch({type: 'add-budget', payload: {budget}})
-  }
+
+    dispatch({ type: "add-budget", payload: { budget } });
+  };
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
